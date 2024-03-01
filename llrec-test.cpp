@@ -67,8 +67,17 @@ void dealloc(Node* head)
 //   function object struct declarations
 // -----------------------------------------------
 
+struct isOdd{
+    bool operator()(int x){
+        return x % 2 == 1;
+    }
+};
 
-
+struct isEven{
+    bool operator()(int x){
+        return x % 2 == 0;
+    }
+};
 
 
 int main(int argc, char* argv[])
@@ -87,8 +96,13 @@ int main(int argc, char* argv[])
 
     // Test out your linked list code
 
+    isOdd compO;
+    isEven compE;
+    head = llfilter(head, compE);
 
-
+    cout << "Filtered: ";
+    print(head);
+    dealloc(head);
     
     return 0;
 

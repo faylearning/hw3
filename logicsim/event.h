@@ -10,7 +10,18 @@ struct Event
 };
 
 typedef struct EventLess {
-        //write the operator() required to make this a functor that compares Events by time
+    //write the operator() required to make this a functor that compares Events by time
+    // take two Event*'s as it’s input and needs to sort them 
+    // using the Event::time data member in such a way that your heap will be a min-heap
+    
+    bool operator()(Event* one, Event* two){
+        if (one->time < two->time){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 } EventLess;
 	
 #endif
